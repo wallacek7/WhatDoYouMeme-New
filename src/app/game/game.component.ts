@@ -18,15 +18,18 @@ export class GameComponent implements OnInit {
     http.get(this._api + "/quotes").subscribe(data=> this.Me.MyQuotes = data.json())
     setInterval(()=> this.refresh(), 1000)
   }
-
+  ngOnInit() {
+  }
   refresh(){
     this.http.get(this._api + "/state")
         .subscribe(data=> this.Model = data.json())
    }
 
-  ngOnInit() {
-  }
-
+   flipPicture(e: MouseEvent){
+    this.http.post(this._api + "/picture",{})
+        .subscribe();
+   }
+   
   submitQuote(e: MouseEvent, text: string){
     e.preventDefault();
 
