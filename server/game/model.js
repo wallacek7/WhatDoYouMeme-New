@@ -105,7 +105,7 @@ const QuotesStack =  [
 
 var iCurrentQuote = 0;
 
-const PicturesStack = [
+var PicturesStack = [
     "https://media3.s-nbcnews.com/j/newscms/2018_14/2387596/180404-oklahoma-city-capitol-teacher-protest-ew-323p_93b119734c532d143960db8f96475eaf.focal-1000x500.jpg",
     "https://media1.s-nbcnews.com/j/newscms/2018_14/2387601/180404-oklahoma-city-capitol-teacher-protest-ew-322p_f37368c21208ba28395347307828b056.fit-560w.jpg"
 ];
