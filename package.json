@@ -1,0 +1,25 @@
+{
+  "name": "whatdoyoumeme-new",
+  "version": "1.0.0",
+  "description": "In-class project. Cannot fix underlying problem in original project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wallacek7/WhatDoYouMeme-New.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wallacek7/WhatDoYouMeme-New/issues"
+  },
+  "homepage": "https://github.com/wallacek7/WhatDoYouMeme-New#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.0",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3"
+  }
+}
