@@ -1,10 +1,12 @@
 
+
+
 export class Game {
-   
+
     Players: User[] = [
         { Name: 'Kayla Wallace', MyQuotes: [] },
-        { Name: 'Barak Obama', MyQuotes: [] },
         { Name: 'Donald Trump', MyQuotes: [] },
+        { Name: 'Barak Obama', MyQuotes: [] },        
     ];
     Dealer: string = "Kayla Wallace";
     Picture: {

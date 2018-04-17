@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http } from "@angular/http";
 import { Game, User, Quote } from '../models/game';
 
 @Component({
@@ -18,27 +18,33 @@ export class GameComponent implements OnInit {
     http.get(this._api + "/quotes").subscribe(data=> this.Me.MyQuotes = data.json())
     setInterval(()=> this.refresh(), 1000)
   }
+
   ngOnInit() {
   }
+
   refresh(){
     this.http.get(this._api + "/state")
         .subscribe(data=> this.Model = data.json())
-   }
+  }
 
-   flipPicture(e: MouseEvent){
+  flipPicture(e: MouseEvent){
     this.http.post(this._api + "/picture",{})
         .subscribe();
-   }
-   
+  }
+
   submitQuote(e: MouseEvent, text: string){
     e.preventDefault();
 
     if(this.MyPlayedQuote()) return;
 
-    this.Model.PlayedQuotes.push({ Text: text, PlayerName: this.Me.Name, Chosen: false });
-    this.Me.MyQuotes.splice( this.Me.MyQuotes.indexOf(text), 1 );
+    this.http.post(this._api + "/quotes", { Text: text, PlayerId: this.Me.Name })
+        .subscribe(data=> {
+            if(data.json().success){
+                this.Me.MyQuotes.splice( this.Me.MyQuotes.indexOf(text), 1 );
+            }
+        });
   }
-  
+
   MyPlayedQuote = () => this.Model.PlayedQuotes.find( x => x.PlayerName == this.Me.Name );
   ChosenQuote = () => this.Model.PlayedQuotes.find( x => x.Chosen );
   IsEveryoneDone = () => this.Model.PlayedQuotes.length == this.Model.Players.length - 1;
