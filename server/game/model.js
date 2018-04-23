@@ -130,7 +130,7 @@ function Game() {
             if(this.Players.some(x=> x.PlayerId == playerId)){
 
             }else{
-                this.Players.push({ PlayerId: playerId, Name: playerId });
+                this.Players.push({ PlayerId: playerId, Name: playerId, Score: 0 });
                    
             }
                 return QuotesStack.slice(iCurrentQuote, iCurrentQuote += 7);
@@ -144,7 +144,9 @@ function Game() {
         } 
         
         this.ChooseQuote = text => {
-            this.PlayedQuotes.find(x=> x.Text == text).Chosen = true;
+            const chosenQuote = this.PlayedQuotes.find(x=> x.Text == text)
+            chosenQuote.Chosen = true;
+            this.Players.find(x=> x.PlayerId == chosenQuote.PlayerId).Score++;
             this.DealerId = this.Players[this.Players.findIndex(x=> x.PlayerId == this.DealerId)  + 1 % this.Players.length ].PlayerId; 
         } 
 
