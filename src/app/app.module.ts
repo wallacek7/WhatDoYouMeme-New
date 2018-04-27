@@ -11,6 +11,7 @@ import { GameComponent } from './game/game.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './services/messages.service';
 import { LoginComponent } from './login/login.component';
+import { GameService } from './services/game.service';
 
 
 @NgModule({
@@ -28,10 +29,11 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'game', component: GameComponent },
+      { path: 'login', component: LoginComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full'}
     ])
   ],
-  providers: [MessagesService],
+  providers: [MessagesService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
