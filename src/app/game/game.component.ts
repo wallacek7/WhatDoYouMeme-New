@@ -4,6 +4,10 @@ import { Game, User, Quote } from '../models/game';
 import { MessagesService } from '../services/messages.service';
 import { GameService } from '../services/game.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-game',
@@ -80,6 +84,13 @@ export class GameComponent implements OnInit {
   ChosenQuote = () => this.Model.PlayedQuotes.find( x => x.Chosen );
   IsEveryoneDone = () => this.Model.PlayedQuotes.length == this.Model.Players.length - 1;
   IAmTheDealer = () => this.Me.Name == this.Model.DealerId;
+
+  search = (text: Observable<string>) => { 
+      text.pipe(
+        map(x => [x] ? [] : [].filter(v => v.toLowerCase().indexOf(x) > -1)))
+  
+};
+/* I Was not able to figure out how to map the list of PlayerIds from the players who are signed in 
+into the 'search' typeahead component. Because I couldn't figure out how to access the list of Players
+the typeahead is not working correctly. */
 }
-/* IAmTheDealer = () => this.Model.Players.find( x => x.PlayerId == this.Players.indexOf(login), 0);
-*/

@@ -46,6 +46,8 @@
         <div class="card" >
             <div class="card-header">Other Players</div>
             <ul class="list-group list-group-flush">
+                    <label for="typeahead-basic">Search for a Player:</label>
+                    <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
                 <li *ngFor="let player of Model.Players" class="list-group-item">
                     <img style="height: 16px; width: 16px" class="rounded">
                     {{player.Name}}
